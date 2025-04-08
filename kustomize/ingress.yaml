@@ -9,22 +9,18 @@ spec:
       - /podinfo
 
 ---
-# Ingress to route traffic to the podinfo service
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
-  name: podinfo-ingress
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
-    traefik.ingress.kubernetes.io/router.middlewares: podinfo-stripprefix@kubernetescrd
+  name: podinfo-ingressroute
 spec:
-  rules:
-  - http:
-      paths:
-      - path: /podinfo
-        pathType: Prefix
-        backend:
-          service:
-            name: podinfo
-            port:
-              number: 9898
+  entryPoints:
+    - web
+  routes:
+    - match: PathPrefix(`/podinfo`)
+      kind: Rule
+      services:
+        - name: podinfo
+          port: 9898
+      middlewares:
+        - name: stripprefix
