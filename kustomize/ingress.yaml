@@ -6,8 +6,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-  - host: podinfo.example.com
-    http:
+  - http:
       paths:
       - path: /podinfo
         pathType: Prefix
