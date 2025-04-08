@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: podinfo-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web  # Adjust for HTTPS (websecure) if needed
+    traefik.ingress.kubernetes.io/router.pathmatcher: PathPrefix
+spec:
+  rules:
+  - host: "*" 
+    http:
+      paths:
+      - path: /podinfo
+        pathType: Prefix
+        backend:
+          service:
+            name: podinfo 
+            port:
+              number: 9898  
