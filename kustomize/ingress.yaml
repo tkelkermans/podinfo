@@ -16,7 +16,7 @@ metadata:
   name: podinfo-ingress
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
-    traefik.ingress.kubernetes.io/router.middlewares: stripprefix
+    traefik.ingress.kubernetes.io/router.middlewares: podinfo-stripprefix@kubernetescrd
 spec:
   rules:
   - http:
