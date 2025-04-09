@@ -15,7 +15,7 @@ metadata:
   name: podinfo-ingressroute
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - match: PathPrefix(`/podinfo`)
       kind: Rule
