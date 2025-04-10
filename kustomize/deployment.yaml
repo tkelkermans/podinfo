@@ -44,6 +44,7 @@ spec:
         - --level=info
         - --random-delay=false
         - --random-error=false
+        - --ui-path=/podinfo
         env:
         - name: PODINFO_UI_COLOR
           value: "#34577c"
