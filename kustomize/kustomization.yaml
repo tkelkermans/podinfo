@@ -5,3 +5,5 @@ resources:
   - deployment.yaml
   - service.yaml
   - ingress.yaml
+patchesStrategicMerge:
+  - deployment-add-ui-path.yaml
